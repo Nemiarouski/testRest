@@ -4,6 +4,8 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import javax.servlet.Filter;
 
+/*Аналог файла web.xml
+            только в виде Java класса?*/
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
