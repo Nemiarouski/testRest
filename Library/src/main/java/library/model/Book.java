@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "books")
 public class Book {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -12,14 +13,15 @@ public class Book {
     @Column(name = "bookName", nullable = false)
     private String bookName;
 
-    @Column(name = "author")
-    private String author;
-
     @Column(name = "description")
     private String description;
 
+    @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="author", referencedColumnName = "id", nullable = false)
+    private Author author;
+
     public Book() { }
-    public Book(String bookName, String author, String description) {
+    public Book(String bookName, Author author, String description) {
         this.bookName = bookName;
         this.author = author;
         this.description = description;
@@ -37,11 +39,11 @@ public class Book {
         this.bookName = bookName;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Author author) {
         this.author = author;
     }
 
@@ -58,7 +60,6 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", bookName='" + bookName + '\'' +
-                ", author='" + author + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

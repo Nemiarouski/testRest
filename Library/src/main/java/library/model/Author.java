@@ -1,6 +1,7 @@
 package library.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "authors")
@@ -18,7 +19,8 @@ public class Author {
 
     public Author() {
     }
-    public Author(String authorName, String authorSurname) {
+    public Author(String authorName, String authorSurname, List<Book> books) {
+        this.books = books;
         this.authorName = authorName;
         this.authorSurname = authorSurname;
     }
@@ -50,5 +52,16 @@ public class Author {
                 ", authorName='" + authorName + '\'' +
                 ", authorSurname='" + authorSurname + '\'' +
                 '}';
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="author")
+    private List<Book> books;
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }
