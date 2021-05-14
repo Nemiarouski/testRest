@@ -1,5 +1,6 @@
 package library.controllers;
 
+import library.dto.BookDto;
 import library.model.Book;
 import library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,12 @@ public class BookController {
     private BookService bookService;
 
     @Autowired
-    public void setBookService(BookService bookService) {
+    public BookController(BookService bookService) {
         this.bookService = bookService;
     }
 
     @GetMapping
-    public List<Book> getAll() {
+    public List<BookDto> getAll() {
      return bookService.findAllBooks();
     }
 

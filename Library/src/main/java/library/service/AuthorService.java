@@ -11,6 +11,10 @@ public class AuthorService {
     private AuthorDAO authorDAO;
 
     @Autowired
+    public AuthorService(AuthorDAO authorDAO) {
+        this.authorDAO = authorDAO;
+    }
+
     public void setAuthorDAO(AuthorDAO authorDAO) {
         this.authorDAO = authorDAO;
     }
