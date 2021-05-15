@@ -11,51 +11,34 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "authorName")
-    private String authorName;
+    @Column(name = "authorFullName")
+    private String authorFullName;
 
-    @Column(name = "authorSurname")
-    private String authorSurname;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="author")
+    private List<Book> books;
 
     public Author() {
     }
-    public Author(String authorName, String authorSurname, List<Book> books) {
+    public Author(String authorFullName, List<Book> books) {
+        this.authorFullName = authorFullName;
         this.books = books;
-        this.authorName = authorName;
-        this.authorSurname = authorSurname;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getAuthorName() {
-        return authorName;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
+    public String getAuthorFullName() {
+        return authorFullName;
     }
 
-    public String getAuthorSurname() {
-        return authorSurname;
+    public void setAuthorFullName(String authorFullName) {
+        this.authorFullName = authorFullName;
     }
-
-    public void setAuthorSurname(String authorSurname) {
-        this.authorSurname = authorSurname;
-    }
-
-    @Override
-    public String toString() {
-        return "Author{" +
-                "id=" + id +
-                ", authorName='" + authorName + '\'' +
-                ", authorSurname='" + authorSurname + '\'' +
-                '}';
-    }
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy="author")
-    private List<Book> books;
 
     public List<Book> getBooks() {
         return books;
@@ -63,5 +46,14 @@ public class Author {
 
     public void setBooks(List<Book> books) {
         this.books = books;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", authorFullName='" + authorFullName + '\'' +
+                ", books=" + books +
+                '}';
     }
 }

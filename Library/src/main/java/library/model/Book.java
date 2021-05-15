@@ -21,18 +21,18 @@ public class Book {
     private Author author;
 
     public Book() { }
-    public Book(String bookName, Author author, String description) {
+    public Book(String bookName, String description, Author author) {
         this.bookName = bookName;
-        this.author = author;
         this.description = description;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        this.author = author;
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getBookName() {
@@ -43,14 +43,6 @@ public class Book {
         this.bookName = bookName;
     }
 
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -59,12 +51,21 @@ public class Book {
         this.description = description;
     }
 
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
                 "id=" + id +
                 ", bookName='" + bookName + '\'' +
                 ", description='" + description + '\'' +
+                ", author=" + author +
                 '}';
     }
 }

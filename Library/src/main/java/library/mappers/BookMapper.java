@@ -1,11 +1,11 @@
-package library.config;
+package library.mappers;
 
-import org.springframework.stereotype.Service;
-import library.model.Book;
 import library.dto.BookDto;
+import library.model.Book;
+import org.springframework.stereotype.Service;
 
 @Service
-public class MappingConfig {
+public class BookMapper {
 
         //из entity в dto
         public BookDto mapToBookDto(Book book){
@@ -13,7 +13,7 @@ public class MappingConfig {
             dto.setId(book.getId());
             dto.setName(book.getBookName());
             dto.setDescription(book.getDescription());
-            dto.setAuthor(book.getAuthor().getAuthorName() + " " + book.getAuthor().getAuthorSurname());
+            dto.setAuthor(book.getAuthor().getAuthorFullName());
             return dto;
         }
 
@@ -23,6 +23,7 @@ public class MappingConfig {
             book.setId(dto.getId());
             book.setBookName(dto.getName());
             book.setDescription(dto.getDescription());
+            //book.setAuthor();
             return book;
         }
 }

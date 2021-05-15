@@ -1,18 +1,23 @@
 package library.service;
 
 import library.dao.AuthorDAO;
+import library.dto.AuthorDto;
+import library.mappers.AuthorMapper;
 import library.model.Author;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AuthorService {
     private AuthorDAO authorDAO;
+    private AuthorMapper authorMapper;
 
     @Autowired
-    public AuthorService(AuthorDAO authorDAO) {
+    public AuthorService(AuthorDAO authorDAO, AuthorMapper authorMapper) {
         this.authorDAO = authorDAO;
+        this.authorMapper = authorMapper;
     }
 
     public void setAuthorDAO(AuthorDAO authorDAO) {
@@ -35,7 +40,10 @@ public class AuthorService {
         authorDAO.update(author);
     }
 
-    public List<Author> findAllAuthors() {
-        return authorDAO.findAll();
+    public List<AuthorDto> findAllAuthors() {
+        //return authorDAO.findAll();
+        return authorDAO.findAll().stream()
+                .map(authorMapper::mapToAuthorDto)
+                .collect(Collectors.toList());
     }
 }

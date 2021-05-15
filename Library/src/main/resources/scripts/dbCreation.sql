@@ -8,8 +8,7 @@ CREATE TABLE users (
 
 CREATE TABLE authors (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    authorName VARCHAR(30),
-    authorSurname VARCHAR(30)
+    authorFullName VARCHAR(30),
 );
 
 CREATE TABLE books (

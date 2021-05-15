@@ -7,11 +7,11 @@ VALUES
 ("Nikolai", "Vasnetsov", "NikVas", "050845");
 
 INSERT INTO Library.authors
-(authorName, authorSurname)
+(authorFullName)
 VALUES
-("Steven", "King"),
-("Max", "Frai"),
-("Dina", "Rubina");
+("Steven King"),
+("Max Frai"),
+("Dina Rubina");
 
 INSERT INTO Library.books (bookName, author, description)
 VALUES

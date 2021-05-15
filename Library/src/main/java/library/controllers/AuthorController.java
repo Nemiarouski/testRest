@@ -1,5 +1,6 @@
 package library.controllers;
 
+import library.dto.AuthorDto;
 import library.model.Author;
 import library.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class AuthorController {
     }
 
     @GetMapping
-    public List<Author> getAll() {
+    public List<AuthorDto> getAll() {
         return authorService.findAllAuthors();
     }
 }
