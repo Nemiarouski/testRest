@@ -1,7 +1,6 @@
 package library.controllers;
 
 import library.dto.AuthorDto;
-import library.model.Author;
 import library.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -20,10 +20,6 @@ public class AuthorService {
         this.authorMapper = authorMapper;
     }
 
-    public void setAuthorDAO(AuthorDAO authorDAO) {
-        this.authorDAO = authorDAO;
-    }
-
     public Author findAuthor(int id) {
         return authorDAO.findById(id);
     }

@@ -14,7 +14,7 @@ public class Author {
     @Column(name = "authorFullName")
     private String authorFullName;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy="author")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy="author")
     private List<Book> books;
 
     public Author() {

@@ -8,14 +8,14 @@ CREATE TABLE users (
 
 CREATE TABLE authors (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    authorFullName VARCHAR(30),
+    authorFullName VARCHAR(30) NOT NULL,
 );
 
 CREATE TABLE books (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    bookName VARCHAR(70),
-    author INT,
-    description VARCHAR (100),
+    bookName VARCHAR(70) NOT NULL,
+    author INT NOT NULL,
+    description VARCHAR (100) NOT NULL,
     FOREIGN KEY (author) REFERENCES authors(id)
 );
 
