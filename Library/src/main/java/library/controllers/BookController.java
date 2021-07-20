@@ -22,21 +22,25 @@ public class BookController {
         this.bookMapper = bookMapper;
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<BookDto> getAll() {
-        return bookService.findAllBooks().stream()
+        return bookService.getAll().stream()
                 .map(bookMapper::mapToDto)
                 .collect(Collectors.toList());
+    }
+    @GetMapping
+    public List<Book> getAll1() {
+        return bookService.getAll();
     }
 
     @GetMapping(value = "/{id}")
     public BookDto getById(@PathVariable("id") int id) {
-        return bookMapper.mapToDto(bookService.findBook(id));
+        return bookMapper.mapToDto(bookService.getById(id));
     }
 
     @PostMapping("/add")
     public BookDto addBook(@RequestBody BookDto bookDto) {
-        Book book = bookService.saveBook(bookMapper.mapToBook(bookDto));
+        Book book = bookService.addBook(bookMapper.mapToBook(bookDto));
         return bookMapper.mapToDto(book);
     }
 

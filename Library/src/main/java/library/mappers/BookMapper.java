@@ -13,7 +13,6 @@ public class BookMapper {
     public BookMapper(AuthorDAO authorDAO) {
         this.authorDAO = authorDAO;
     }
-
     //из entity в dto
     public BookDto mapToDto(Book book){
         BookDto dto = new BookDto();
